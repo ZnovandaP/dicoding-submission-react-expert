@@ -1,3 +1,15 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/jsx-props-no-spreading": 0,
+    "react/require-default-props": 0,
+    "@typescript-eslint/no-unused-vars": 1,
+    "import/no-extraneous-dependencies": 0,
+    "linebreak-style": "off"
+  },
+
+  "ignorePatterns": ["dist", "build", "next.config.js"]
 }
