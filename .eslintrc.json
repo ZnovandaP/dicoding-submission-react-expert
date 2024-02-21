@@ -8,6 +8,7 @@
     "react/require-default-props": 0,
     "@typescript-eslint/no-unused-vars": 1,
     "import/no-extraneous-dependencies": 0,
+    "no-param-reassign": "off",
     "linebreak-style": "off"
   },
 
