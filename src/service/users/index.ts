@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseUrl, fetchWithAuth } from '../common/fetch-with-auth';
 
-export const getAllUser = async () => {
+export const getAllUsers = async () => {
   try {
     const { data } = await axios.get(`${baseUrl}/users`);
     return data;

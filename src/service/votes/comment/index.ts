@@ -2,7 +2,7 @@ import { fetchWithAuth } from '@/service/common/fetch-with-auth';
 
 // * Note: voteType value can be 1 (up-vote), 0 (neutral), or -1 (down-vote)
 
-type VoteCommentParams = {
+export type VoteCommentParams = {
   threadId: string
   commentId: string
 };
@@ -35,7 +35,7 @@ export const neutralVoteComment = async ({ threadId, commentId }: VoteCommentPar
   try {
     const data = await fetchWithAuth({
       method: 'post',
-      endpoint: `threads/${threadId}/comments/${commentId}/down-vote`,
+      endpoint: `threads/${threadId}/comments/${commentId}/neutral-vote`,
     });
     return data;
   } catch (error: any) {

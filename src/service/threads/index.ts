@@ -1,6 +1,6 @@
 import { fetchWithAuth } from '../common/fetch-with-auth';
 
-type PostThread = {
+export type PostThread = {
   title: string
   body: string
   category: string

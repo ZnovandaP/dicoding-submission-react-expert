@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { baseUrl } from '../common/fetch-with-auth';
 
-type LoginParams = {
+export type LoginParams = {
   email: string;
   password: string;
 };
 
-type RegisterParams = LoginParams & {
+export type RegisterParams = LoginParams & {
   name: string;
 };
 
