@@ -12,5 +12,14 @@
     "linebreak-style": "off"
   },
 
-  "ignorePatterns": ["dist", "build", "next.config.js"]
+  "ignorePatterns": [
+    "dist",
+    "build",
+    "next.config.js",
+    "node_modules",
+    "postcss.config.cjs",
+    "next.config.mjs",
+    "tailwind.config.js",
+    "postcss.config.js"
+  ]
 }
