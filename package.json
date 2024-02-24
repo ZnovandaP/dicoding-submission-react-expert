@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "pnpm lint -- --fix"
+    "lint:fix": "pnpm lint -- --fix",
+    "format": "prettier ./src/components --write"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.1",
@@ -36,6 +37,9 @@
     "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-next": "14.1.0",
     "postcss": "^8.4.35",
+    "prettier": "3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "react-icons": "^5.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
