@@ -1,9 +1,11 @@
 import * as React from 'react';
 import type { Metadata } from 'next';
 import { Inter, Kaushan_Script } from 'next/font/google';
-import './globals.css';
 import cn from '@/utils/cn';
 import AppShell from '@/components/AppShell';
+
+import './globals.css';
+import ToastifyContainer from '@/components/Container/ToastifyContainer';
 
 // * next/font
 const kaushanScript = Kaushan_Script({
@@ -33,8 +35,9 @@ export default function RootLayout({
       className={cn(inter.variable, kaushanScript.variable)}
       suppressHydrationWarning
     >
-      <body className="h-[3000px] font-inter font-medium bg-neutral-50 dark:bg-neutral-950" suppressHydrationWarning>
+      <body className="font-inter font-medium bg-neutral-50 dark:bg-neutral-950" suppressHydrationWarning>
         <AppShell>
+          <ToastifyContainer />
           {children}
         </AppShell>
       </body>
