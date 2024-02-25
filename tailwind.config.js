@@ -32,11 +32,23 @@ module.exports = {
         fade: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },
+        },
+
+        'half-slide-right': {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
+
+        'half-slide-left': {
+          '0%': { transform: 'translateX(50%)' },
+          '100%': { transform: 'translateX(0%)' },
         }
       },
 
       animation: {
         fade: 'fade 0.5s ease-in-out alternate',
+        'half-slide-right': 'half-slide-right 0.5s ease-in-out alternate',
+        'half-slide-left': 'half-slide-left 0.5s ease-in-out alternate',
       }
     },
   },
