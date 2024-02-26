@@ -4,8 +4,9 @@
 'use client';
 
 import * as React from 'react';
-import StoreProvider from '@/libs/redux/store/StoreProvider';
 import NextTopLoader from 'nextjs-toploader';
+import LoadingBar from 'react-redux-loading-bar';
+import StoreProvider from '@/libs/redux/store/StoreProvider';
 import Container from '../Container';
 import Navbar from '../Navbar';
 import NextThemesProvider from '../NextThemeProvider';
@@ -30,11 +31,20 @@ export default function AppShell({ children }: AppShellProps) {
         disableTransitionOnChange
       >
         <header className="inline">
+          <LoadingBar style={{
+            backgroundColor: '#c026d3',
+            height: '3px',
+            zIndex: 99999,
+            marginLeft: '10px',
+          }}
+          />
           <Navbar open={open} setOpen={setOpen} />
         </header>
 
         <main onClick={() => setOpen(false)}>
-          <Container className="mt-6">{children}</Container>
+          <Container className="mt-6">
+            {children}
+          </Container>
         </main>
       </NextThemesProvider>
     </StoreProvider>
