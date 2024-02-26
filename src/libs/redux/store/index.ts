@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import {
   TypedUseSelectorHook, useDispatch, useSelector, useStore,
 } from 'react-redux';
+import { loadingBarReducer } from 'react-redux-loading-bar';
 
 import loginSlice from '../slices/auth/login';
 import registerSlice from '../slices/auth/register';
@@ -29,6 +30,7 @@ export const makeStore = () => (
       voteThread: voteThreadSlice.reducer,
       voteComment: voteCommentSlice.reducer,
       leaderboards: getLeaderboardsSlice.reducer,
+      loadingBar: loadingBarReducer,
     },
   })
 );
