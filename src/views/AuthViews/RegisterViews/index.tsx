@@ -1,5 +1,3 @@
-'use client';
-
 import * as React from 'react';
 import AuthWrapper from '../ComponentSupport/AuthWrapper';
 import AuthNote from '../ComponentSupport/AuthNote';
