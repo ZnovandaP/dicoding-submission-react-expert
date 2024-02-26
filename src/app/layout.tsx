@@ -6,6 +6,7 @@ import AppShell from '@/components/AppShell';
 
 import './globals.css';
 import ToastifyContainer from '@/components/Container/ToastifyContainer';
+import METADATA from '@/constant/metadata';
 
 // * next/font
 const kaushanScript = Kaushan_Script({
@@ -22,8 +23,22 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Sharing Sepuh',
-  description: 'Website applikasi diskusi berbagai hal',
+  metadataBase: new URL(process.env.NODE_ENV === 'development'
+    ? 'http://localhost:3000' : process.env.DOMAIN || ''),
+  title: `Threads ${METADATA.exTitle}`,
+  description: METADATA.description,
+  keywords: METADATA.keyword,
+  creator: METADATA.creator,
+  authors: {
+    name: METADATA.creator,
+    url: METADATA.openGraph.url,
+  },
+  openGraph: {
+    url: METADATA.openGraph.url,
+    siteName: METADATA.openGraph.siteName,
+    locale: METADATA.openGraph.locale,
+    type: 'website',
+  },
 };
 
 export default function RootLayout({
