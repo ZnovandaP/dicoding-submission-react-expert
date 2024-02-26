@@ -1,3 +1,5 @@
+'use client';
+
 import * as React from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
@@ -22,8 +24,6 @@ const registerSchema = z.object({
 
 type RegisterValue = z.infer<typeof registerSchema>;
 export default function FormRegister() {
-  // const { status, message } = useAppSelector((state) => state.register);
-
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -69,7 +69,7 @@ export default function FormRegister() {
         error={errors}
       />
 
-      <ButtonAuthSubmit isSubmitting={isSubmitting} label="Register" />
+      <ButtonAuthSubmit errors={errors} isSubmitting={isSubmitting} label="Register" />
     </form>
   );
 }
