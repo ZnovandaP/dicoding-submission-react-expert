@@ -8,7 +8,7 @@ type InitialState = {
   status: 'idle' | 'loading' | 'error' | 'success';
 };
 
-export const asyncGetUsers = createAsyncThunk('user/profile', async () => {
+export const asyncGetProfile = createAsyncThunk('user/profile', async () => {
   try {
     const { data } = await getOwnProfile();
     return data;
@@ -24,23 +24,23 @@ const initialState: InitialState = {
 };
 
 const getProfileSlice = createSlice({
-  name: 'asyncGetUsers',
+  name: 'asyncGetProfile',
   initialState,
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(asyncGetUsers.pending, (state) => {
+      .addCase(asyncGetProfile.pending, (state) => {
         state.status = 'loading';
         state.message = 'Mohon tunggu...';
       })
 
-      .addCase(asyncGetUsers.fulfilled, (state, action) => {
+      .addCase(asyncGetProfile.fulfilled, (state, action) => {
         state.data = action.payload.user as User;
         state.status = 'success';
         state.message = 'Data profile pengguna didapatkan!';
       })
 
-      .addCase(asyncGetUsers.rejected, (state) => {
+      .addCase(asyncGetProfile.rejected, (state) => {
         state.status = 'error';
         state.message = 'Data profile pengguna gagal didapatkan!';
       });
