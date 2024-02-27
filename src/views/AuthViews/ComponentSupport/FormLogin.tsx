@@ -3,12 +3,13 @@
 import * as React from 'react';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { unwrapResult } from '@reduxjs/toolkit';
 import { asyncLogin } from '@/libs/redux/slices/auth/login';
 import { useAppDispatch } from '@/libs/redux/store';
 import Input from '@/components/Input';
+import { signIn } from 'next-auth/react';
+import { toast } from 'react-toastify';
 import ButtonAuthSubmit from './ButtonAuthSubmit';
 
 const loginSchema = z.object({
@@ -24,17 +25,29 @@ type LoginValue = z.infer<typeof loginSchema>;
 export default function FormLogin() {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
 
   const {
     register, handleSubmit, formState: { errors, isSubmitting },
   } = useForm<LoginValue>({ resolver: zodResolver(loginSchema) });
 
   const handleLogin = handleSubmit(async (data) => {
-    const resultAction = await dispatch(asyncLogin(data));
-    const originalPromiseResult = unwrapResult(resultAction);
+    // * authentication with next auth have to integration with redux
+    try {
+      dispatch(asyncLogin(data));
+      const res = await signIn('credentials', {
+        ...data,
+        redirect: false,
+        callbackUrl,
+      });
 
-    if (originalPromiseResult.status === 'success') {
-      router.push('/');
+      if (res?.ok) {
+        router.push(callbackUrl);
+      }
+    } catch (error: any) {
+      toast.error(error.message as string);
     }
   });
 
