@@ -85,7 +85,7 @@ function Body({ openProfile }: { openProfile: boolean }) {
 
   return (
     <DrawerBase open={openProfile} className="flex flex-col justify-center items-center gap-4">
-      <div className="mt-2 flex flex-col items-start gap-1 text-left">
+      <div className="mt-2 flex flex-col items-start self-start gap-1 text-left">
         <h2 className="line-clamp-1 hyphens-auto opacity-90">
           {data?.email}
         </h2>
