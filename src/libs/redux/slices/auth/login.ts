@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { LoginParams, login } from '@/service/auth';
 import { toast } from 'react-toastify';
-import { putAccessToken } from '@/service/common/store-token';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 type InitialState = {
@@ -43,7 +42,6 @@ const loginSlice = createSlice({
         state.data = action.payload.data.token;
         state.status = 'success';
         state.message = 'Login sukses selamat datang';
-        putAccessToken(state.data as string);
         toast.success(state.message);
       })
 
