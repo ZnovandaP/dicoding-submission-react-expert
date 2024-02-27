@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios';
-import { getAccessToken } from './store-token';
+import { getSession } from 'next-auth/react';
 
 // * Api documentations: https://forum-api.dicoding.dev/v1
 
@@ -15,12 +15,14 @@ export const fetchWithAuth = async ({
   endpoint, options, method,
 }: FetchWithAuthParams) => {
   try {
+    const session = await getSession();
+    const getAccessTokenFromSession = session?.user.accessToken;
     const { data } = await axios.request({
       ...options,
       method,
       url: `${baseUrl}/${endpoint}`,
       headers: {
-        Authorization: `Bearer ${getAccessToken()}`,
+        Authorization: `Bearer ${getAccessTokenFromSession}`,
       },
     });
     return data;
