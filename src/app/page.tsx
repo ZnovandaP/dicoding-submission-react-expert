@@ -1,7 +1,8 @@
 import * as React from 'react';
+import ThreadsViews from '@/views/ThreadsViews';
 
 export default function Threads() {
   return (
-    <h1 className="text-5xl">Hello Hippo!!</h1>
+    <ThreadsViews />
   );
 }
