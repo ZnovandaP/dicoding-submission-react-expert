@@ -10,7 +10,8 @@ const nextConfig = {
         port: "", 
         pathname: "/**"
       }
-    ]
+    ],
+    dangerouslyAllowSVG: true,
   }
 };
 
