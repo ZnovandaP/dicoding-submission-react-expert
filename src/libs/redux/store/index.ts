@@ -12,8 +12,6 @@ import getThreadsSlice from '../slices/threads/get-threads';
 import postThreadSlice from '../slices/threads/post-thread';
 import detailThreadSlice from '../slices/threads/detail-thread';
 import postCommentSlice from '../slices/comments/post-comment';
-import voteThreadSlice from '../slices/votes/threads';
-import voteCommentSlice from '../slices/votes/comments';
 import getLeaderboardsSlice from '../slices/leaderboards';
 
 export const makeStore = () => (
@@ -27,8 +25,6 @@ export const makeStore = () => (
       threads: getThreadsSlice.reducer,
       postThread: postThreadSlice.reducer,
       postComment: postCommentSlice.reducer,
-      voteThread: voteThreadSlice.reducer,
-      voteComment: voteCommentSlice.reducer,
       leaderboards: getLeaderboardsSlice.reducer,
       loadingBar: loadingBarReducer,
     },
