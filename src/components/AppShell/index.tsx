@@ -23,7 +23,7 @@ export default function AppShell({ children }: AppShellProps) {
           backgroundColor: '#c026d3',
           height: '3px',
           zIndex: 99999,
-          marginLeft: '10px',
+          position: 'fixed',
         }}
         />
         <Navbar open={open} setOpen={setOpen} />
