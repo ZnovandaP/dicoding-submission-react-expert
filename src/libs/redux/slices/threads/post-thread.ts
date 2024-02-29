@@ -1,17 +1,21 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { type PostThread, postThread } from '@/service/threads';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 type InitialState = {
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
 };
 
-export const asyncPostThread = createAsyncThunk('thread/postThread', async (body: PostThread) => {
+export const asyncPostThread = createAsyncThunk('thread/postThread', async (body: PostThread, { dispatch }) => {
   try {
-    const { data } = await postThread(body);
+    dispatch(showLoading());
+    const data = await postThread(body);
     return data;
   } catch (error: any) {
     throw new Error(error.message);
+  } finally {
+    dispatch(hideLoading());
   }
 });
 
