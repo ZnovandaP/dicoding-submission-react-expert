@@ -22,5 +22,13 @@ export async function middleware(request: NextRequest) {
     }
   }
 
+  // * redirect pathname /threads to root pathname
+
+  const pathnameToThreads = ['/threads', '/threads/'];
+
+  if (pathnameToThreads.includes(currentPathname)) {
+    return NextResponse.redirect(new URL('/', request.url));
+  }
+
   return NextResponse.next();
 }
