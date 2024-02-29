@@ -21,7 +21,7 @@ export default function AppShell({ children }: AppShellProps) {
       <header className="inline">
         <LoadingBar style={{
           backgroundColor: '#c026d3',
-          height: '3px',
+          height: '7px',
           zIndex: 99999,
           position: 'fixed',
         }}
