@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import usePreload from '@/hooks/usePreload';
+import { asyncGetProfile } from '@/libs/redux/slices/users/get-own-profile';
 import Container from '../Container';
 import NavMenuDrawer from './NavMenu/NavMenuDrawer';
 import NavMenu from './NavMenu/NavMenu';
@@ -12,6 +14,8 @@ type NavbarProps = {
 };
 
 export default function Navbar({ open, setOpen }: NavbarProps) {
+  usePreload([asyncGetProfile]);
+
   return (
     <nav className="sticky top-0 z-50 h-[72px] border-b-2 border-primary bg-neutral-50/10 backdrop-blur-xl">
       <Container className="relative flex h-full w-full items-center justify-between">
