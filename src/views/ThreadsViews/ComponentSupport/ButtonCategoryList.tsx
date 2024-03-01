@@ -20,11 +20,13 @@ export default function ButtonCategoryLists() {
 
   return (
     <>
+      {status === 'success' && (
       <div className="flex flex-wrap items-center gap-3">
         {data && categories?.map((category) => (
           <ButtonCategory category={category} key={category} />
         ))}
       </div>
+      )}
 
       <CatgeoryLoading status={status as 'loading'} />
     </>
