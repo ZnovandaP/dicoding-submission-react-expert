@@ -6,7 +6,7 @@ type CategoryWrapperProps = {
 
 export default function CategoryWrapper({ children }: CategoryWrapperProps) {
   return (
-    <div className="flex flex-col gap-4 z-10 sticky top-16 h-full pb-4 bg-neutral-50 dark:bg-neutral-950 lg:w-[40%]">
+    <div className="flex flex-col gap-4 z-10 sticky top-16 h-full pb-4 bg-neutral-50/10 backdrop-blur-xl rounded-lg dark:pl-4 dark:mt-4 lg:w-[40%]">
       {children}
     </div>
   );
