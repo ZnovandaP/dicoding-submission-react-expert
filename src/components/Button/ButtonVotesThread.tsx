@@ -39,6 +39,7 @@ export function ButtonVotesThreads({ thread }:
   const handleDownVote = () => {
     if (status === 'unauthenticated') {
       toast.error('Anda harus login terlebih dahulu');
+      return;
     }
 
     if (isDownVoted) {
@@ -86,6 +87,7 @@ export function ButtonVotesDetailThread({ thread }:
   const handleDownVote = () => {
     if (status === 'unauthenticated') {
       toast.error('Anda harus login terlebih dahulu');
+      return;
     }
 
     if (isDownVoted) {

@@ -33,6 +33,7 @@ export default function ButtonVotesCommentThread({ comment }: { comment: Comment
   const handleDownVote = () => {
     if (status === 'unauthenticated') {
       toast.error('Anda harus login terlebih dahulu');
+      return;
     }
 
     if (isDownVoted) {
