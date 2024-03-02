@@ -10,8 +10,7 @@ import getUsersSlice from '../slices/users/get-users';
 import getProfileSlice from '../slices/users/get-own-profile';
 import getThreadsSlice from '../slices/threads/get-threads';
 import postThreadSlice from '../slices/threads/post-thread';
-import detailThreadSlice from '../slices/threads/detail-thread';
-import postCommentSlice from '../slices/comments/post-comment';
+import detailThreadSlice from '../slices/detail-thread';
 import getLeaderboardsSlice from '../slices/leaderboards';
 
 export const makeStore = () => (
@@ -24,7 +23,6 @@ export const makeStore = () => (
       thread: detailThreadSlice.reducer,
       threads: getThreadsSlice.reducer,
       postThread: postThreadSlice.reducer,
-      postComment: postCommentSlice.reducer,
       leaderboards: getLeaderboardsSlice.reducer,
       loadingBar: loadingBarReducer,
     },
