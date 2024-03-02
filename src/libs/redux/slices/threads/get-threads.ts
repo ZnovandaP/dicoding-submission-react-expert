@@ -1,15 +1,13 @@
-import { toast } from 'react-toastify';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import { toast } from 'react-toastify';
 import { getAllUsers } from '@/service/users';
 import { getAllThreads } from '@/service/threads';
-import { downVoteThread, neutralVoteThread, upVoteThread } from '@/service/votes/thread';
 import { Users } from '@/types/response/users';
-import { Vote } from '@/types/response/vote';
-import type { ThreadWithAuthor, Threads } from '@/types/response/threads';
+import type { ThreadWithOwner, Threads } from '@/types/response/threads';
+import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralVoteThread } from './vote-threads-thunk';
 
 type InitialState = {
-  data: ThreadWithAuthor[] | null
+  data: ThreadWithOwner[] | null
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
 };
@@ -29,113 +27,17 @@ export const asyncGetThreadsWithAuthor = createAsyncThunk('thread/getThreadsWith
 
       return {
         ...thread,
-        author: {
+        owner: {
           name: author.name,
           email: author.email,
           avatar: author.avatar,
         },
       };
-    }) as ThreadWithAuthor[];
+    }) as ThreadWithOwner[];
   } catch (error: any) {
     throw new Error(error.message);
   }
 });
-
-export const asyncUpVoteThread = createAsyncThunk(
-  'thread/upVote',
-  async (threadId: string, { dispatch, getState }) => {
-    try {
-      dispatch(showLoading());
-      await upVoteThread(threadId);
-
-      const { threads } = getState() as { threads: { data: ThreadWithAuthor[] } };
-      const { profile } = getState() as { profile: { data: Vote } };
-
-      const profileId = profile.data?.id;
-
-      return threads.data?.map((thread) => {
-        if (thread.id === threadId) {
-          return {
-            ...thread,
-            upVotesBy: thread.upVotesBy.includes(profileId)
-              ? thread.upVotesBy
-              : [...thread.upVotesBy, profileId],
-            downVotesBy: thread.downVotesBy.includes(profileId)
-              ? thread.downVotesBy.filter((voteId) => voteId !== profileId)
-              : thread.downVotesBy,
-          };
-        }
-        return thread;
-      });
-    } catch (error: any) {
-      throw new Error(error.message);
-    } finally {
-      dispatch(hideLoading());
-    }
-  },
-);
-
-export const asyncDownVoteThread = createAsyncThunk(
-  'thread/downVote',
-  async (threadId: string, { dispatch, getState }) => {
-    try {
-      dispatch(showLoading());
-      await downVoteThread(threadId);
-
-      const { threads } = getState() as { threads: { data: ThreadWithAuthor[] } };
-      const { profile } = getState() as { profile: { data: Vote } };
-
-      const profileId = profile.data?.id;
-
-      return threads.data?.map((thread) => {
-        if (thread.id === threadId) {
-          return {
-            ...thread,
-            upVotesBy: thread.upVotesBy.includes(profileId)
-              ? thread.upVotesBy.filter((voteId) => voteId !== profileId)
-              : thread.upVotesBy,
-            downVotesBy: thread.downVotesBy.includes(profileId)
-              ? thread.downVotesBy
-              : [...thread.downVotesBy, profileId],
-          };
-        }
-        return thread;
-      });
-    } catch (error: any) {
-      throw new Error(error.message);
-    } finally {
-      dispatch(hideLoading());
-    }
-  },
-);
-
-export const asyncNeutralVoteThread = createAsyncThunk(
-  'thread/NeutralVote',
-  async (threadId: string, { dispatch, getState }) => {
-    try {
-      dispatch(showLoading());
-      const { threads } = getState() as any;
-      const { data }: { data: { vote: Vote } } = await neutralVoteThread(threadId);
-
-      const threadWithAuthor = threads.data as ThreadWithAuthor[];
-
-      return threadWithAuthor.map((thread) => {
-        if (thread.id === threadId) {
-          return {
-            ...thread,
-            upVotesBy: thread.upVotesBy.filter((voteId) => voteId !== data.vote.userId),
-            downVotesBy: thread.downVotesBy.filter((voteId) => voteId !== data.vote.userId),
-          };
-        }
-        return thread;
-      });
-    } catch (error: any) {
-      throw new Error(error.message);
-    } finally {
-      dispatch(hideLoading());
-    }
-  },
-);
 
 const initialState: InitialState = {
   data: null,
