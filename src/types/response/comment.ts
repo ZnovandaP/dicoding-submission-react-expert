@@ -10,3 +10,9 @@ export type Comment = {
   upVotesBy: string[]
   downVotesBy: string[]
 };
+
+export type CommentWithEmailOwner = Omit<Comment, 'owner'> & {
+  owner: Pick<Comment, 'owner'>['owner'] & {
+    email: string
+  }
+};
