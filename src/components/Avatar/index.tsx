@@ -18,6 +18,7 @@ export default function Avatar({
       alt={alt}
       width={500}
       height={500}
+      loading="lazy"
       className={cn(
         'rounded-full',
 
