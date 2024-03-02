@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities{
   .center{
     @apply flex justify-center items-center
@@ -33,5 +37,9 @@
 
   .ping::after{
     @apply absolute -top-[3px] -left-[3px] content-[''] bg-green-600/50 w-[14px] h-[14px] animate-ping rounded-full
+  }
+
+  .title-page{
+    @apply bg-gradient-to-r from-primary via-pink-600 to-rose-500 bg-clip-text text-2xl font-bold text-transparent first-letter:font-extrabold first-letter:mr-1 first-letter:font-kaushan first-letter:text-5xl dark:from-dark-primary dark:via-pink-400 dark:to-rose-500 md:text-3xl  md:first-letter:text-6xl lg:text-4xl xl:first-letter:text-7xl first-letter:uppercase text-pretty
   }
 }
