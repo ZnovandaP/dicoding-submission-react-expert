@@ -11,7 +11,7 @@ type InitialState = {
 export const asyncGetLeaderboards = createAsyncThunk('users/leaderboards', async () => {
   try {
     const { data } = await getLeaderboards();
-    return data;
+    return data.leaderboards as UserLeaderboards;
   } catch (error: any) {
     throw new Error(error.message);
   }
@@ -35,7 +35,7 @@ const getLeaderboardsSlice = createSlice({
       })
 
       .addCase(asyncGetLeaderboards.fulfilled, (state, action) => {
-        state.data = action.payload.users as UserLeaderboards;
+        state.data = action.payload;
         state.status = 'success';
         state.message = 'Data seluruh pengguna didapatkan!';
       })
