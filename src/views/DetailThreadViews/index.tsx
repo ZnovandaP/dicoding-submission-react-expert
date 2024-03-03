@@ -8,6 +8,7 @@ import { useAppSelector } from '@/libs/redux/store';
 import DetailThreadCard from '@/components/Card/DetailThread';
 import CommentSection from './ComponentSupport/CommentSection';
 import DetaliThreadLoading from './ComponentSupport/UILoading';
+import NotFoundViews from '../NotFoundViews';
 
 type DetailtThreadViewsProps = {
   slug: string;
@@ -30,6 +31,14 @@ export default function DetailtThreadViews({ slug }: DetailtThreadViewsProps) {
       )}
 
       <DetaliThreadLoading status={status as 'loading'} />
+
+      { status === 'error' && (
+      <NotFoundViews
+        message="Thread tidak ditemukan! Silahkan kembali ke halaman"
+        href="/threads"
+        hrefLabel="Threads"
+      />
+      )}
     </section>
   );
 }
