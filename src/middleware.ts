@@ -14,10 +14,8 @@ export async function middleware(request: NextRequest) {
     secret: process.env.NEXTAUTH_SECRET,
   });
 
-  const routeProtectAuth = ['/login', '/register', '/auth'];
-
   if (tokenAuth) {
-    if (routeProtectAuth.includes(currentPathname)) {
+    if (currentPathname.includes('/login') || currentPathname.includes('/register')) {
       return NextResponse.redirect(new URL('/', request.url));
     }
   }
