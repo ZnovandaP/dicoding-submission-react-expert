@@ -12,7 +12,10 @@ const nextConfig = {
       }
     ],
     dangerouslyAllowSVG: true,
-  }
+  },
+  experimental: {
+    missingSuspenseWithCSRBailout: false,
+  },
 };
 
 export default nextConfig;
