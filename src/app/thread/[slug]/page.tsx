@@ -11,27 +11,46 @@ type ThreadPageProps = {
   }
 };
 
+/*  */
+
 export async function generateMetadata({ params }: ThreadPageProps): Promise<Metadata> {
-  const { slug } = params;
+  try {
+    const { slug } = params;
 
-  const { data } = await getDetailThread(slug);
+    const { data } = await getDetailThread(slug);
 
-  const thread = data.detailThread as DetailThread;
+    const thread = data.detailThread as DetailThread;
 
-  return {
-    title: `${thread?.title || 'Thread tidak ditemukan'} ${METADATA.exTitle}`,
-    description: thread?.body || 'Deskripsi thread tidak ditemukan',
-    openGraph: {
-      url: `${process.env.DOMAIN}/thread/${thread?.id || ''}`,
-      siteName: METADATA.openGraph.siteName,
-      locale: METADATA.openGraph.locale,
-      type: 'article',
-    },
-    keywords: thread?.title || 'Post Not Found',
-    alternates: {
-      canonical: `${process.env.DOMAIN}/thread/${thread?.id || ''}`,
-    },
-  };
+    return {
+      title: `${thread?.title || 'Thread tidak ditemukan'} ${METADATA.exTitle}`,
+      description: thread?.body || 'Deskripsi thread tidak ditemukan',
+      openGraph: {
+        url: `${process.env.DOMAIN}/thread/${thread?.id || ''}`,
+        siteName: METADATA.openGraph.siteName,
+        locale: METADATA.openGraph.locale,
+        type: 'article',
+      },
+      keywords: thread?.title || 'Post Not Found',
+      alternates: {
+        canonical: `${process.env.DOMAIN}/thread/${thread?.id || ''}`,
+      },
+    };
+  } catch (error) {
+    return {
+      title: `Thread tidak ditemukan ${METADATA.exTitle}`,
+      description: 'Deskripsi thread tidak ditemukan',
+      openGraph: {
+        url: `${process.env.DOMAIN}/thread/not-found`,
+        siteName: METADATA.openGraph.siteName,
+        locale: METADATA.openGraph.locale,
+        type: 'article',
+      },
+      keywords: 'Thread Not Found',
+      alternates: {
+        canonical: `${process.env.DOMAIN}/thread/not-found`,
+      },
+    };
+  }
 }
 
 export default function DetailThreadPage({ params: { slug } }: ThreadPageProps) {
