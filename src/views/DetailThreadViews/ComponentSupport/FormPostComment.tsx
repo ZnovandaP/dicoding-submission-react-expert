@@ -9,7 +9,6 @@ import { useAppDispatch } from '@/libs/redux/store';
 import { useSession } from 'next-auth/react';
 import asyncPostCommentThread from '@/libs/redux/slices/detail-thread/post-comment-thread-thunk';
 import { unwrapResult } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
 import ButtonSubmitPostComment from './ButtonSubmitPostComment';
 
 type FormPostCommentProps = {
@@ -40,7 +39,6 @@ export default function FormPostComment({ containerCommentRef }: FormPostComment
     const originalPromiseResult = unwrapResult(resultAction);
 
     if (originalPromiseResult) {
-      toast.success('Postingan diskusi berhasil ditambahkan');
       reset();
       containerCommentRef.current?.scrollIntoView({
         behavior: 'smooth',

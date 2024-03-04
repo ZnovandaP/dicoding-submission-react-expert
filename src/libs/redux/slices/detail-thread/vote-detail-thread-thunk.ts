@@ -3,17 +3,19 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { upVoteThread, downVoteThread, neutralVoteThread } from '@/service/votes/thread';
 import { DetailThreadWithEmailOwner } from '@/types/response/threads';
 import { User } from '@/types/response/users';
+import { toast } from 'react-toastify';
 
 export const asyncUpVoteDetailThread = createAsyncThunk(
   'detailThread/upVote',
   async (threadId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await upVoteThread(threadId);
 
@@ -27,7 +29,8 @@ export const asyncUpVoteDetailThread = createAsyncThunk(
           : dataThread.downVotesBy,
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }
@@ -37,13 +40,14 @@ export const asyncUpVoteDetailThread = createAsyncThunk(
 export const asyncDownVoteDetailThread = createAsyncThunk(
   'detailThread/downVote',
   async (threadId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await downVoteThread(threadId);
 
@@ -57,7 +61,8 @@ export const asyncDownVoteDetailThread = createAsyncThunk(
           : [...dataThread.downVotesBy, dataProfile.id],
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }
@@ -67,13 +72,14 @@ export const asyncDownVoteDetailThread = createAsyncThunk(
 export const asyncNeutralVoteDetailThread = createAsyncThunk(
   'detailThread/NeutralVote',
   async (threadId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await neutralVoteThread(threadId);
 
@@ -87,7 +93,8 @@ export const asyncNeutralVoteDetailThread = createAsyncThunk(
           : dataThread.downVotesBy,
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }

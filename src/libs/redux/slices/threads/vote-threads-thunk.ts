@@ -3,16 +3,17 @@ import { upVoteThread, downVoteThread, neutralVoteThread } from '@/service/votes
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { Vote } from '@/types/response/vote';
 import { ThreadWithOwner } from '@/types/response/threads';
+import { toast } from 'react-toastify';
 
 export const asyncUpVoteThread = createAsyncThunk(
   'thread/upVote',
   async (threadId: string, { dispatch, getState }) => {
+    const { threads } = getState() as { threads: { data: ThreadWithOwner[] } };
+    const { profile } = getState() as { profile: { data: Vote } };
+
     try {
       dispatch(showLoading());
       await upVoteThread(threadId);
-
-      const { threads } = getState() as { threads: { data: ThreadWithOwner[] } };
-      const { profile } = getState() as { profile: { data: Vote } };
 
       const profileId = profile.data?.id;
 
@@ -31,7 +32,8 @@ export const asyncUpVoteThread = createAsyncThunk(
         return thread;
       });
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return threads.data;
     } finally {
       dispatch(hideLoading());
     }
@@ -41,12 +43,12 @@ export const asyncUpVoteThread = createAsyncThunk(
 export const asyncDownVoteThread = createAsyncThunk(
   'thread/downVote',
   async (threadId: string, { dispatch, getState }) => {
+    const { threads } = getState() as { threads: { data: ThreadWithOwner[] } };
+    const { profile } = getState() as { profile: { data: Vote } };
+
     try {
       dispatch(showLoading());
       await downVoteThread(threadId);
-
-      const { threads } = getState() as { threads: { data: ThreadWithOwner[] } };
-      const { profile } = getState() as { profile: { data: Vote } };
 
       const profileId = profile.data?.id;
 
@@ -65,7 +67,8 @@ export const asyncDownVoteThread = createAsyncThunk(
         return thread;
       });
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return threads.data;
     } finally {
       dispatch(hideLoading());
     }
@@ -75,10 +78,11 @@ export const asyncDownVoteThread = createAsyncThunk(
 export const asyncNeutralVoteThread = createAsyncThunk(
   'thread/NeutralVote',
   async (threadId: string, { dispatch, getState }) => {
+    const { threads } = getState() as any;
+    const { data }: { data: { vote: Vote } } = await neutralVoteThread(threadId);
+
     try {
       dispatch(showLoading());
-      const { threads } = getState() as any;
-      const { data }: { data: { vote: Vote } } = await neutralVoteThread(threadId);
 
       const threadWithAuthor = threads.data as ThreadWithOwner[];
 
@@ -93,7 +97,8 @@ export const asyncNeutralVoteThread = createAsyncThunk(
         return thread;
       });
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Thread tidak ditemukan! silahkan refresh halaman');
+      return threads.data;
     } finally {
       dispatch(hideLoading());
     }

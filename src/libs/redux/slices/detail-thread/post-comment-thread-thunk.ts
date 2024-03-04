@@ -4,25 +4,28 @@ import { postComment } from '@/service/comments';
 import { DetailThreadWithEmailOwner } from '@/types/response/threads';
 import { Comment, CommentWithEmailOwner } from '@/types/response/comment';
 import { User } from '@/types/response/users';
+import { toast } from 'react-toastify';
 
 const asyncPostCommentThread = createAsyncThunk(
   'commentThread/postComment',
   async (body: { content: string }, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const {
+      profile: { data: dataProfile },
+    } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-
-      const {
-        profile: { data: dataProfile },
-      } = getState() as { profile: { data: User } };
 
       const { data } = await postComment({
         threadId: dataThread.id,
         body,
       });
+
+      toast.success('Komentar berhasil ditambahkan');
 
       const newComment = data.comment as Comment;
 
@@ -40,7 +43,8 @@ const asyncPostCommentThread = createAsyncThunk(
         comments: [commentWithEmail, ...dataThread.comments],
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Komentar tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }

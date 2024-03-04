@@ -3,17 +3,19 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { downVoteComment, neutralVoteComment, upVoteComment } from '@/service/votes/comment';
 import { DetailThreadWithEmailOwner } from '@/types/response/threads';
 import { User } from '@/types/response/users';
+import { toast } from 'react-toastify';
 
 export const asyncUpVoteCommentThread = createAsyncThunk(
   'commentThread/upVote',
   async (commentId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await upVoteComment({
         commentId,
@@ -38,7 +40,8 @@ export const asyncUpVoteCommentThread = createAsyncThunk(
         }),
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Comment tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }
@@ -48,13 +51,14 @@ export const asyncUpVoteCommentThread = createAsyncThunk(
 export const asyncDownVoteCommentThread = createAsyncThunk(
   'commentThread/downVote',
   async (commentId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await downVoteComment({
         commentId,
@@ -79,7 +83,8 @@ export const asyncDownVoteCommentThread = createAsyncThunk(
         }),
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Comment tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }
@@ -89,13 +94,14 @@ export const asyncDownVoteCommentThread = createAsyncThunk(
 export const asyncNeutralVoteCommentThread = createAsyncThunk(
   'commentThread/NeutralVote',
   async (commentId: string, { dispatch, getState }) => {
+    const {
+      thread: { data: dataThread },
+    } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
+
+    const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
+
     try {
       dispatch(showLoading());
-
-      const {
-        thread: { data: dataThread },
-      } = getState() as { thread: { data: DetailThreadWithEmailOwner } };
-      const { profile: { data: dataProfile } } = getState() as { profile: { data: User } };
 
       await neutralVoteComment({
         commentId,
@@ -120,7 +126,8 @@ export const asyncNeutralVoteCommentThread = createAsyncThunk(
         }),
       };
     } catch (error: any) {
-      throw new Error(error.message);
+      toast.error('Comment tidak ditemukan! silahkan refresh halaman');
+      return dataThread;
     } finally {
       dispatch(hideLoading());
     }
