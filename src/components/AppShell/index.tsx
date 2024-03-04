@@ -8,6 +8,7 @@ import LoadingBar from 'react-redux-loading-bar';
 import Container from '../Container';
 import Navbar from '../Navbar';
 import Providers from '../Providers';
+import Footer from './Footer';
 
 type AppShellProps = {
   children: React.ReactNode
@@ -34,6 +35,10 @@ export default function AppShell({ children }: AppShellProps) {
           {children}
         </Container>
       </main>
+
+      <footer onClick={() => setOpen(false)} className="bg-fuchsia-900 dark:bg-fuchsia-950 text-white h-56 py-4">
+        <Footer />
+      </footer>
     </Providers>
   );
 }
