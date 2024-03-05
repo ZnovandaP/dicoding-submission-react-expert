@@ -9,15 +9,16 @@ import ToolBar from './ToolBar';
 
 type TipTapProps = {
   label: string
-  onChange: (richText: string) => void
   description: string
   id: string
   error: Object
+  isSuccess?: boolean
+  onChange: (richText: string) => void
   setHTML: React.Dispatch<React.SetStateAction<string>>
 };
 
 const TipTapEditor = React.forwardRef<HTMLDivElement, TipTapProps>(({
-  onChange, description, id, error, setHTML, label, ...props
+  onChange, setHTML, description, id, error, label, isSuccess = false, ...props
 }, ref) => {
   const editors = useEditor({
     extensions: [
@@ -70,6 +71,13 @@ const TipTapEditor = React.forwardRef<HTMLDivElement, TipTapProps>(({
       setHTML(getHTML);
     },
   });
+
+  React.useEffect(() => {
+    if (isSuccess) {
+      editors?.commands.setContent('');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSuccess]);
 
   return (
     <div className="flex flex-col gap-4">
