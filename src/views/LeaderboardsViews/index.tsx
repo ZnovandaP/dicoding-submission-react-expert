@@ -8,6 +8,7 @@ import { asyncGetProfile } from '@/libs/redux/slices/users/get-own-profile';
 import LeaderboardSection from './ComponentSupport/LeaderboardSection';
 import LeaderboardHeadSection from './ComponentSupport/LeaderboardHeadSection';
 import LeadeboardLoading from './ComponentSupport/UILoading';
+import ButtonCreatePost from '../ThreadsViews/ComponentSupport/ButtonCreatePost';
 
 export default function LeaderboardsViews() {
   usePreload([asyncGetLeaderboards, asyncGetProfile]);
@@ -21,6 +22,7 @@ export default function LeaderboardsViews() {
       )}
 
       <LeadeboardLoading status={status as 'loading'} />
+      <ButtonCreatePost />
     </div>
   );
 }
