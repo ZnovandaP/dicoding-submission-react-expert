@@ -43,7 +43,11 @@ const asyncPostCommentThread = createAsyncThunk(
         comments: [commentWithEmail, ...dataThread.comments],
       };
     } catch (error: any) {
-      toast.error('Komentar tidak ditemukan! silahkan refresh halaman');
+      if (error.message.includes('404')) {
+        toast.error('Komentar tidak ditemukan! silahkan refresh halaman');
+      } else {
+        toast.error('Komentar gagal diposting! file konten terlalu besar');
+      }
       return dataThread;
     } finally {
       dispatch(hideLoading());
