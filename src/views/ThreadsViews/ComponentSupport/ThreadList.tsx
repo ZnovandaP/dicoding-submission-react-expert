@@ -16,7 +16,6 @@ export default function ThreadList() {
   const threadsBasedOnCategories = data?.filter(
     (thread) => (getAllCategories.length > 0 ? getAllCategories.includes(thread.category) : thread),
   )!;
-  // console.log(threadsBasedOnCategories);
   return (
     <>
       <ThreadsLoading status={status as 'loading'} />
