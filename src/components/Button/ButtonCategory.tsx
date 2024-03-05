@@ -24,14 +24,7 @@ export default function ButtonCategory({ category }: ButtonCategoryProps) {
     }
 
     if (getAllCategories.includes(currentCategory)) {
-      const newCategories = getAllCategories
-        .filter((categoryParams) => categoryParams !== currentCategory);
-
-      newCategories.forEach((categoryParams) => current.set('category', categoryParams));
-
-      if (getAllCategories.length === 1) {
-        current.delete('category');
-      }
+      current.delete('category', currentCategory);
     } else {
       current.append('category', currentCategory);
     }
