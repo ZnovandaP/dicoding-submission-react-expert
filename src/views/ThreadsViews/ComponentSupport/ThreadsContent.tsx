@@ -5,7 +5,7 @@ import ThreadList from './ThreadList';
 
 export default function ThreadsContent() {
   return (
-    <div className="flex justify-between flex-col lg:flex-row-reverse lg:gap-8">
+    <div className="flex justify-between flex-col mt-2 lg:flex-row-reverse lg:gap-8">
       <CategoryWrapper>
         <CategoryHead />
         <ButtonCategoryLists />
