@@ -97,10 +97,6 @@ export default function FormPostThread() {
       <Controller
         name="body"
         control={control}
-        rules={{
-          required: { value: true, message: 'Konten harus diisi' },
-          minLength: { value: 3, message: 'Konten minimal 3 karakter' },
-        }}
         render={({ field }) => (
           <TipTapEditor
             id="body"
