@@ -1,5 +1,11 @@
 {
-  "extends": ["next/core-web-vitals", "airbnb", "airbnb-typescript"],
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:jest/recommended",
+    "plugin:testing-library/react"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   },
@@ -9,7 +15,18 @@
     "@typescript-eslint/no-unused-vars": 1,
     "import/no-extraneous-dependencies": 0,
     "no-param-reassign": "off",
-    "linebreak-style": "off"
+    "linebreak-style": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+  },
+  "plugins": ["jest", "jest-dom", "testing-library"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest": true
   },
 
   "ignorePatterns": [
