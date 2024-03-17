@@ -73,7 +73,7 @@ describe('login spec', () => {
     cy.get('div.Toastify__toast--success').should('be.visible');
   });
 
-  it('should display homepage when username and password are correct', () => {
+  it('should display homepage when email and password are correct', () => {
     cy.get('input[type="email"]').type('nenenk@mail.id');
     cy.get('input[type="password"]').type('12345678');
     cy.get('form').submit();
