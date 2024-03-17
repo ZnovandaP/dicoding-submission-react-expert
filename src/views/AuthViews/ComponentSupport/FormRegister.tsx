@@ -9,15 +9,19 @@ import { useAppDispatch } from '@/libs/redux/store';
 import Input from '@/components/Input';
 import { useRouter } from 'next/navigation';
 import { unwrapResult } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import ButtonAuthSubmit from './ButtonAuthSubmit';
 
 const registerSchema = z.object({
   name: z.string()
+    .min(1, { message: 'Nama harus diisi' })
     .min(3, { message: 'Nama minimal 3 karakter' })
     .max(50, { message: 'Nama maksimal 50 karakter' }),
   email: z.string()
+    .min(1, { message: 'Email harus diisi' })
     .email({ message: 'Format email tidak valid' }),
   password: z.string()
+    .min(1, { message: 'Password harus diisi' })
     .min(6, { message: 'Password minimal 6 karakter' })
     .max(15, { message: 'Password maksimal 15 karakter' }),
 });
@@ -32,11 +36,16 @@ export default function FormRegister() {
   } = useForm<RegisterValue>({ resolver: zodResolver(registerSchema) });
 
   const handleRegister = handleSubmit(async (data) => {
-    const resultAction = await dispatch(asyncRegister(data));
-    const originalPromiseResult = unwrapResult(resultAction);
+    try {
+      const resultAction = await dispatch(asyncRegister(data));
+      const originalPromiseResult = unwrapResult(resultAction);
 
-    if (originalPromiseResult.status === 'success') {
-      router.push('/login');
+      if (originalPromiseResult.status === 'success') {
+        toast.success('Registrasi sukses silahkan login');
+        router.push('/login');
+      }
+    } catch (error) {
+      toast.error('Registrasi gagal, email ini sudah terdaftar');
     }
   });
 
@@ -49,7 +58,7 @@ export default function FormRegister() {
         {...register('name')}
         label="Nama"
         id="name"
-        type="name"
+        type="text"
         error={errors}
       />
 
