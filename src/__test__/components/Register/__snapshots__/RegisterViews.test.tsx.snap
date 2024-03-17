@@ -1,0 +1,216 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test RegisterViews component should render correctly component RegisterViews 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-md bg-neutral-200 p-8 dark:bg-neutral-800 sm:w-[85%] md:top-0 md:h-full md:w-2/3 md:-translate-x-0 md:-translate-y-0 md:justify-center lg:w-1/2 transition-all duration-300 animate-fade md:right-0 md:animate-half-slide-right"
+      >
+        <h2
+          class="text-center text-xl md:text-2xl"
+        >
+          Register
+           
+          <span
+            class="font-kaushan"
+          >
+            Sharing Sepuh
+          </span>
+        </h2>
+        <form
+          class="flex w-full flex-col gap-3"
+        >
+          <label
+            class="flex flex-col gap-2"
+            for="name"
+          >
+             
+            Nama
+            <input
+              class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              id="name"
+              name="name"
+              type="name"
+            />
+          </label>
+          <label
+            class="flex flex-col gap-2"
+            for="email"
+          >
+             
+            Email
+            <input
+              class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              id="email"
+              name="email"
+              type="email"
+            />
+          </label>
+          <label
+            class="flex flex-col gap-2"
+            for="password"
+          >
+             
+            Password
+            <input
+              class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+              id="password"
+              name="password"
+              type="password"
+            />
+          </label>
+          <button
+            class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+            type="submit"
+          >
+            Register
+          </button>
+        </form>
+        <p
+          class="text-center"
+        >
+          Sudah punya akun? silahkan
+           
+          <a
+            class="text-fuchsia-600 dark:text-fuchsia-400"
+            href="/login"
+          >
+            login disini
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="absolute left-1/2 top-1/2 flex w-full -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-4 rounded-md bg-neutral-200 p-8 dark:bg-neutral-800 sm:w-[85%] md:top-0 md:h-full md:w-2/3 md:-translate-x-0 md:-translate-y-0 md:justify-center lg:w-1/2 transition-all duration-300 animate-fade md:right-0 md:animate-half-slide-right"
+    >
+      <h2
+        class="text-center text-xl md:text-2xl"
+      >
+        Register
+         
+        <span
+          class="font-kaushan"
+        >
+          Sharing Sepuh
+        </span>
+      </h2>
+      <form
+        class="flex w-full flex-col gap-3"
+      >
+        <label
+          class="flex flex-col gap-2"
+          for="name"
+        >
+           
+          Nama
+          <input
+            class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+            id="name"
+            name="name"
+            type="name"
+          />
+        </label>
+        <label
+          class="flex flex-col gap-2"
+          for="email"
+        >
+           
+          Email
+          <input
+            class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+            id="email"
+            name="email"
+            type="email"
+          />
+        </label>
+        <label
+          class="flex flex-col gap-2"
+          for="password"
+        >
+           
+          Password
+          <input
+            class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
+            id="password"
+            name="password"
+            type="password"
+          />
+        </label>
+        <button
+          class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+          type="submit"
+        >
+          Register
+        </button>
+      </form>
+      <p
+        class="text-center"
+      >
+        Sudah punya akun? silahkan
+         
+        <a
+          class="text-fuchsia-600 dark:text-fuchsia-400"
+          href="/login"
+        >
+          login disini
+        </a>
+      </p>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
