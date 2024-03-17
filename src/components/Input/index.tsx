@@ -23,7 +23,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({
         type={type}
         name={id}
         id={id}
-        required
         className="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
       />
     </label>
