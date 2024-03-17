@@ -15,6 +15,9 @@
 
 .swc
 
+#cypress 
+cypress/screenshots/** 
+
 # production
 /build
 
