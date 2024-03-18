@@ -23,7 +23,7 @@ export default function Button({
       {...props}
       type={type}
       className={cn(
-        'cursor-pointer rounded-md px-4 py-2 transition-all duration-500',
+        'cursor-pointer rounded-md px-4 py-2 transition-all duration-500 center gap-2',
 
         variant === 'primary'
           && 'bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50',
