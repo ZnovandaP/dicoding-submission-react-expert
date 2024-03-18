@@ -49,7 +49,7 @@ exports[`Test LoginViews component should render correctly component LoginViews 
             />
           </label>
           <button
-            class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+            class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 center bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
             type="submit"
           >
             Login
@@ -115,7 +115,7 @@ exports[`Test LoginViews component should render correctly component LoginViews 
           />
         </label>
         <button
-          class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+          class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 center bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
           type="submit"
         >
           Login

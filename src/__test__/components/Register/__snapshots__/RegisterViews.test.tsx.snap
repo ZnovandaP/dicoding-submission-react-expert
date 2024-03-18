@@ -32,7 +32,7 @@ exports[`Test RegisterViews component should render correctly component Register
               class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
               id="name"
               name="name"
-              type="name"
+              type="text"
             />
           </label>
           <label
@@ -62,7 +62,7 @@ exports[`Test RegisterViews component should render correctly component Register
             />
           </label>
           <button
-            class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+            class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 center bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
             type="submit"
           >
             Register
@@ -111,7 +111,7 @@ exports[`Test RegisterViews component should render correctly component Register
             class="rounded-md bg-transparent p-3 ring-1 ring-primary/60 focus:outline-none focus:ring-2 focus:ring-primary"
             id="name"
             name="name"
-            type="name"
+            type="text"
           />
         </label>
         <label
@@ -141,7 +141,7 @@ exports[`Test RegisterViews component should render correctly component Register
           />
         </label>
         <button
-          class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
+          class="cursor-pointer rounded-md px-4 py-2 transition-all duration-500 center bg-primary hover:bg-primary/70 text-neutral-50 active:scale-105 active:bg-primary/50 center gap-3 mt-4 disabled:cursor-not-allowed disabled:opacity-50"
           type="submit"
         >
           Register
