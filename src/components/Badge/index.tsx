@@ -3,7 +3,7 @@ import * as React from 'react';
 
 type BadgeProps = {
   children: React.ReactNode
-  size?: 'sm' | 'md' | 'lg' | 'xl',
+  size?: 'sm' | 'md',
   className?: string
 };
 

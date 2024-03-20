@@ -3,6 +3,7 @@ import { getDetailThread } from '@/service/threads';
 import type { DetailThread, DetailThreadWithEmailOwner } from '@/types/response/threads';
 import { toast } from 'react-toastify';
 import { Users } from '@/types/response/users';
+import { getAllUsers } from '@/service/users';
 import {
   asyncUpVoteCommentThread,
   asyncDownVoteCommentThread,
@@ -14,9 +15,8 @@ import {
   asyncUpVoteDetailThread,
 } from './vote-detail-thread-thunk';
 import asyncPostCommentThread from './post-comment-thread-thunk';
-import { asyncGetUsers } from '../users/get-users';
 
-type InitialState = {
+export type InitialState = {
   data: DetailThreadWithEmailOwner | null
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
@@ -24,14 +24,15 @@ type InitialState = {
 
 export const asyncDetailThread = createAsyncThunk(
   'thread/detailThread',
-  async (threadId: string, { getState, dispatch }) => {
+  async (threadId: string) => {
     try {
-      await dispatch(asyncGetUsers());
-      const { users: { data: dataUsers } } = getState() as { users: { data: Users } };
-      const { data } = await getDetailThread(threadId);
+      const { data: dataUsers } = await getAllUsers();
+      const { data: dataDetailThread } = await getDetailThread(threadId);
 
-      const detailThread = data.detailThread as DetailThread;
-      const getUserOwnerTheThread = dataUsers.find((user) => detailThread.owner.id === user.id)!;
+      const detailThread = dataDetailThread.detailThread as DetailThread;
+      const users = dataUsers.users as Users;
+
+      const getUserOwnerTheThread = users.find((user) => detailThread.owner.id === user.id)!;
 
       return {
         ...detailThread,
@@ -41,7 +42,7 @@ export const asyncDetailThread = createAsyncThunk(
         },
         totalComments: detailThread.comments.length,
         comments: detailThread.comments.map((comment) => {
-          const getUserComment = dataUsers.find((user) => comment.owner.id === user.id)!;
+          const getUserComment = users.find((user) => comment.owner.id === user.id)!;
 
           if (getUserComment) {
             return {

@@ -6,7 +6,7 @@ import { Users } from '@/types/response/users';
 import type { ThreadWithOwner, Threads } from '@/types/response/threads';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralVoteThread } from './vote-threads-thunk';
 
-type InitialState = {
+export type InitialState = {
   data: ThreadWithOwner[] | null
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
@@ -60,6 +60,11 @@ const getThreadsSlice = createSlice({
         state.data = action.payload;
         state.status = 'success';
         state.message = 'Data threads berhasil didapatkan!';
+      })
+
+      .addCase(asyncGetThreadsWithAuthor.rejected, (state) => {
+        state.status = 'error';
+        state.message = 'Data threads gagal didapatkan!';
       })
 
       .addCase(asyncUpVoteThread.fulfilled, (state, action) => {

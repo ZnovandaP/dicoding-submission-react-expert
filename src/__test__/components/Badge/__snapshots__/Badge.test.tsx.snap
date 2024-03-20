@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test Badge component should render correctly component Badge 1`] = `
+<div
+  class="center text-xs px-4 py-1 ring-1 ring-primary rounded-full"
+>
+  default
+</div>
+`;

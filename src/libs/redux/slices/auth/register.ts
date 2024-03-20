@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { register, RegisterParams } from '@/service/auth';
-import { toast } from 'react-toastify';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
 type InitialState = {
@@ -39,13 +38,11 @@ const registerSlice = createSlice({
       .addCase(asyncRegister.fulfilled, (state) => {
         state.status = 'success';
         state.message = 'Registrasi sukses silahkan login';
-        toast.success(state.message);
       })
 
       .addCase(asyncRegister.rejected, (state) => {
         state.status = 'error';
         state.message = 'Registrasi gagal, email ini sudah terdaftar';
-        toast.error(state.message);
       });
   },
 

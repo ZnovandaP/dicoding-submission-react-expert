@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import getLeaderboards from '@/service/leaderboards';
 import type { UserLeaderboards } from '@/types/response/users';
 
-type InitialState = {
+export type InitialState = {
   data: UserLeaderboards | null
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';

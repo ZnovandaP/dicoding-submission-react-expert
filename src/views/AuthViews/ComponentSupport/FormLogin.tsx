@@ -14,8 +14,10 @@ import ButtonAuthSubmit from './ButtonAuthSubmit';
 
 const loginSchema = z.object({
   email: z.string()
+    .min(1, { message: 'Email harus diisi' })
     .email({ message: 'Format email tidak valid' }),
   password: z.string()
+    .min(1, { message: 'Password harus diisi' })
     .min(6, { message: 'Password minimal 6 karakter' })
     .max(15, { message: 'Password maksimal 15 karakter' }),
 });

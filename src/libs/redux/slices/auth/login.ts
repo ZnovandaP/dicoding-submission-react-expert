@@ -3,7 +3,7 @@ import { LoginParams, login } from '@/service/auth';
 import { toast } from 'react-toastify';
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 
-type InitialState = {
+export type InitialState = {
   data: string | null;
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
@@ -18,8 +18,9 @@ const initialState: InitialState = {
 export const asyncLogin = createAsyncThunk('auth/login', async (body: LoginParams, { dispatch }) => {
   try {
     dispatch(showLoading());
-    const data = await login(body);
-    return data;
+    const { data } = await login(body);
+
+    return data.token as string;
   } catch (error: any) {
     throw new Error(error.message);
   } finally {
@@ -39,7 +40,7 @@ const loginSlice = createSlice({
       })
 
       .addCase(asyncLogin.fulfilled, (state, action) => {
-        state.data = action.payload.data.token;
+        state.data = action.payload;
         state.status = 'success';
         state.message = 'Login sukses selamat datang';
         toast.success(state.message);
