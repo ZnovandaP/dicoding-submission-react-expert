@@ -15,7 +15,8 @@ import {
 import getThreadsSlice, { asyncGetThreadsWithAuthor, InitialState } from '@/libs/redux/slices/threads/get-threads';
 import { fakeErrorResponse, fakeUsersResponse, fakeThreadsResponse } from '../utils/fake-data-response';
 
-const fakeData: ThreadWithOwner[] = [
+// eslint-disable-next-line jest/no-export, import/prefer-default-export
+export const fakeData: ThreadWithOwner[] = [
   {
     id: 'thread-1',
     title: 'Thread Pertama',

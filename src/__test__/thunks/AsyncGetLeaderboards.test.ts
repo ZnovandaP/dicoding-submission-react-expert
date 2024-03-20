@@ -18,7 +18,8 @@ import {
 } from '@reduxjs/toolkit';
 import { fakeErrorResponse, fakeLeaderboardsResponse } from '../utils/fake-data-response';
 
-const fakeData: UserLeaderboards = [
+// eslint-disable-next-line jest/no-export, import/prefer-default-export
+export const fakeData: UserLeaderboards = [
   {
     user: {
       id: 'users-1',

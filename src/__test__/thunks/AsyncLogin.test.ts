@@ -1,3 +1,4 @@
+/* eslint-disable jest/no-export */
 /* eslint-disable jest/no-conditional-expect */
 /**
  * - asyncLogin thunk spec:
@@ -18,9 +19,9 @@ import {
 import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import { fakeErrorResponse, fakeLoginResponse } from '../utils/fake-data-response';
 
-const fakeData: string = 'token-12345678';
+export const fakeData: string = 'token-12345678';
 
-const arg = {
+export const arg = {
   email: 'john@example.com',
   password: '12345678',
 };

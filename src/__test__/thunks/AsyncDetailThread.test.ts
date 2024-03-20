@@ -15,7 +15,8 @@ import {
 } from '@reduxjs/toolkit';
 import { fakeDetailThreadResponse, fakeErrorResponse, fakeUsersResponse } from '../utils/fake-data-response';
 
-const fakeData: DetailThreadWithEmailOwner = {
+// eslint-disable-next-line jest/no-export, import/prefer-default-export
+export const fakeData: DetailThreadWithEmailOwner = {
   body: 'Ini adalah thread pertama',
   category: 'General',
   comments: [{
