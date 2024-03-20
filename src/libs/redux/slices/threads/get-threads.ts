@@ -62,6 +62,11 @@ const getThreadsSlice = createSlice({
         state.message = 'Data threads berhasil didapatkan!';
       })
 
+      .addCase(asyncGetThreadsWithAuthor.rejected, (state) => {
+        state.status = 'error';
+        state.message = 'Data threads gagal didapatkan!';
+      })
+
       .addCase(asyncUpVoteThread.fulfilled, (state, action) => {
         state.data = action.payload;
       })
