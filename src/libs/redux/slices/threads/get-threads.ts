@@ -6,7 +6,7 @@ import { Users } from '@/types/response/users';
 import type { ThreadWithOwner, Threads } from '@/types/response/threads';
 import { asyncUpVoteThread, asyncDownVoteThread, asyncNeutralVoteThread } from './vote-threads-thunk';
 
-type InitialState = {
+export type InitialState = {
   data: ThreadWithOwner[] | null
   message: string | null
   status: 'idle' | 'loading' | 'error' | 'success';
