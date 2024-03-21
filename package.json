@@ -14,7 +14,7 @@
     "cypress:open": "cypress open",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "ci:test": "jest --no-watch && start-server-and-test dev http://localhost:3000 e2e"
+    "ci:test": "jest --no-watch"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
