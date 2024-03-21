@@ -15,7 +15,7 @@ export default function ThreadsViews() {
   return (
     <section className="mt-8 relative min-h-[70dvh]">
       <h2 className="font-kaushan font-semibold text-3xl md:text-4xl">
-        Diskusi/Thread yang tersedia
+        Diskusi/Thread yang tersedia (test)
         <span className="text-primary dark:text-dark-primary ml-2">
           {`(${data?.length ?? '0'})`}
         </span>
