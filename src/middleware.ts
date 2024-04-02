@@ -18,6 +18,10 @@ export async function middleware(request: NextRequest) {
     if (currentPathname.includes('/login') || currentPathname.includes('/register')) {
       return NextResponse.redirect(new URL('/', request.url));
     }
+  } else if (!tokenAuth) {
+    if (currentPathname.includes('/create-post')) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
   }
 
   // * redirect pathname /threads to root pathname
