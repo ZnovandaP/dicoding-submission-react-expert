@@ -38,7 +38,7 @@ export default function AppShell({ children }: AppShellProps) {
 
       <footer
         onClick={() => setOpen(false)}
-        className="bg-gradient-to-r from-primary via-purple-400 to-primary text-white h-56 mt-10 py-4"
+        className="bg-gradient-to-r  from-fuchsia-950  via-purple-800  to-fuchsia-950 text-white h-56 mt-10 py-4"
       >
         <Footer />
       </footer>
