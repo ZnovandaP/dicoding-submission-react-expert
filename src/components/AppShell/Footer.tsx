@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <Container className="relative w-full h-full">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[2] w-[85%] md:w-[60%] lg:w-[45%]">
-        <h2 className="center flex-col gap-3 text-2xl md:text-3xl lg:text-4xl text-center text-pretty font-kaushan bg-neutral-50/10 backdrop-blur-xl p-6 px-8 rounded-lg shadow-xl shadow-primary">
+        <h2 className="center flex-col gap-3 text-2xl md:text-3xl lg:text-4xl text-center text-pretty font-kaushan bg-neutral-50/10 backdrop-blur-xl p-6 px-8 rounded-lg shadow-xl shadow-violet-700/75">
           &copy; Sharing Sepuh -
           {' '}
           {new Date().getFullYear()}
@@ -22,7 +22,7 @@ export default function Footer() {
         </h2>
       </div>
 
-      <div className="absolute w-full h-full left-0 bottom-0 opacity-40">
+      <div className="absolute w-full h-full left-0 bottom-0 opacity-70">
         <Image
           src="/decoration-pattern.svg"
           alt=""

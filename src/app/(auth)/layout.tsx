@@ -14,7 +14,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
         priority
         width={1000}
         height={1000}
-        className="w-[100dvw] h-[80dvh] rounded-lg object-cover"
+        className="w-[100dvw] min-h-[80dvh] rounded-lg object-cover"
       />
 
       {children}
