@@ -66,7 +66,7 @@ export default function FormPostThread() {
   return (
     <form
       onSubmit={handlePostThread}
-      className="mt-8 flex w-full flex-col gap-6 rounded-md shadow-neutral-500/60 dark:bg-neutral-900 md:w-[85%] md:bg-neutral-100 md:p-6 md:shadow-md lg:w-[70%] xl:w-[60%]"
+      className="mt-8 flex w-full flex-col gap-6 rounded-md shadow-neutral-500/60 dark:bg-neutral-900 md:w-[85%] md:bg-neutral-100 md:p-6 md:shadow-md md:ring-2 md:ring-neutral-400/50 dark:md:ring-neutral-600/50 lg:w-[70%] xl:w-[60%]"
     >
       <Input
         {...register('title')}
