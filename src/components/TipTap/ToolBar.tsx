@@ -18,7 +18,7 @@ export default function ToolBar({ editor }: ToolBarProps) {
   }
 
   return (
-    <div className="center gap-2">
+    <div className="center flex-wrap gap-2">
 
       <TipTapActionButton
         icon={<LuHeading />}
