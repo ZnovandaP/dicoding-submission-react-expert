@@ -25,7 +25,7 @@ const TipTapEditor = React.forwardRef<HTMLDivElement, TipTapProps>(({
       StarterKit.configure({
         heading: {
           HTMLAttributes: {
-            class: 'text-2xl text-pink-500 font-medium my-2',
+            class: 'text-2xl text-pink-500 font-semibold my-2',
           },
           levels: [2],
         },

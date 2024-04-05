@@ -15,15 +15,9 @@ import TipTapEditor from '@/components/TipTap';
 import ButtonSubmitPost from './ButtonSubmitPost';
 
 const postThreadSchema = z.object({
-  title: z.string()
-    .max(100, { message: 'category maksimal 100 karakter' })
-    .trim(),
-  category: z.string()
-    .max(20, { message: 'category maksimal 20 karakter' })
-    .trim(),
-  body: z.string()
-    .min(3, { message: 'Konten minimal 3 karakter' })
-    .trim(),
+  title: z.string().max(100, { message: 'category maksimal 100 karakter' }).trim(),
+  category: z.string().max(20, { message: 'category maksimal 20 karakter' }).trim(),
+  body: z.string().min(3, { message: 'Konten minimal 3 karakter' }).trim(),
 });
 
 type PostThreadValue = z.infer<typeof postThreadSchema>;
@@ -38,10 +32,7 @@ export default function FormPostThread() {
     register,
     handleSubmit,
     control,
-    formState: {
-      errors,
-      isSubmitting,
-    },
+    formState: { errors, isSubmitting },
   } = useForm<PostThreadValue>({
     mode: 'onChange',
     resolver: zodResolver(postThreadSchema),
@@ -54,11 +45,13 @@ export default function FormPostThread() {
     }
 
     try {
-      const resultAction = await dispatch(asyncPostThread({
-        title: data.title,
-        category: data.category,
-        body: html,
-      }));
+      const resultAction = await dispatch(
+        asyncPostThread({
+          title: data.title,
+          category: data.category,
+          body: html,
+        }),
+      );
       const originalPromiseResult = unwrapResult(resultAction);
 
       if (originalPromiseResult.status === 'success') {
@@ -73,7 +66,7 @@ export default function FormPostThread() {
   return (
     <form
       onSubmit={handlePostThread}
-      className="flex flex-col gap-6 p-6 mt-8 w-full bg-neutral-100 dark:bg-neutral-900 rounded-md shadow-md shadow-neutral-500/60 md:w-[85%] lg:w-[70%] xl:w-[60%]"
+      className="mt-8 flex w-full flex-col gap-6 rounded-md shadow-neutral-500/60 dark:bg-neutral-900 md:w-[85%] md:bg-neutral-100 md:p-6 md:shadow-md md:ring-2 md:ring-neutral-400/50 dark:md:ring-neutral-600/50 lg:w-[70%] xl:w-[60%]"
     >
       <Input
         {...register('title')}
@@ -91,7 +84,6 @@ export default function FormPostThread() {
         id="category"
         placeholder="Kategori Postingan Diskusi..."
         error={errors}
-
       />
 
       <Controller
@@ -110,11 +102,7 @@ export default function FormPostThread() {
         )}
       />
 
-      <ButtonSubmitPost
-        errors={errors}
-        isSubmitting={isSubmitting}
-      />
-
+      <ButtonSubmitPost errors={errors} isSubmitting={isSubmitting} />
     </form>
   );
 }

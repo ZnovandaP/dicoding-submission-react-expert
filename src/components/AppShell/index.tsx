@@ -36,7 +36,10 @@ export default function AppShell({ children }: AppShellProps) {
         </Container>
       </main>
 
-      <footer onClick={() => setOpen(false)} className="bg-fuchsia-900 dark:bg-fuchsia-950 text-white h-56 mt-10 py-4">
+      <footer
+        onClick={() => setOpen(false)}
+        className="bg-gradient-to-r  from-fuchsia-950  via-purple-800  to-fuchsia-950 text-white h-56 mt-10 py-4"
+      >
         <Footer />
       </footer>
     </Providers>

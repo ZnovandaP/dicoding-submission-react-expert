@@ -5,10 +5,13 @@ import usePreload from '@/hooks/usePreload';
 import { useAppSelector } from '@/libs/redux/store';
 import { asyncGetProfile } from '@/libs/redux/slices/users/get-own-profile';
 import { asyncGetThreadsWithAuthor } from '@/libs/redux/slices/threads/get-threads';
+import { useSession } from 'next-auth/react';
 import ThreadsContent from './ComponentSupport/ThreadsContent';
 import ButtonCreatePost from './ComponentSupport/ButtonCreatePost';
 
 export default function ThreadsViews() {
+  const { status } = useSession();
+
   usePreload([asyncGetThreadsWithAuthor, asyncGetProfile]);
   const { data } = useAppSelector((state) => state.threads);
 
@@ -22,7 +25,9 @@ export default function ThreadsViews() {
       </h2>
 
       <ThreadsContent />
-      <ButtonCreatePost />
+
+      {status === 'authenticated' && <ButtonCreatePost />}
+
     </section>
 
   );
